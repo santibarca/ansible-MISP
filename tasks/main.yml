@@ -615,12 +615,12 @@
         - { re: '^PrivateTmp=yes', rep: 'PrivateTmp=no' }
         - { re: '^PrivateDevices=yes', rep: 'PrivateDevices=no' }
         # - { re: '^', rep: '' }
-- name: Ensure redis is active before launching worker
-  ansible.builtin.service:
-    name: "{{ redis_svc }}"
-    state: started
-    enabled: yes
-  when: not (ansible_virtualization_type is defined and ansible_virtualization_type == "docker")
+# - name: Ensure redis is active before launching worker
+#   ansible.builtin.service:
+#     name: "{{ redis_svc }}"
+#     state: started
+#     enabled: yes
+#   when: not (ansible_virtualization_type is defined and ansible_virtualization_type == "docker")
 
 - name: Docker | Manually start redis
   ansible.builtin.shell: "/usr/bin/redis-server {{ redis_conf }} --daemonize yes > /tmp/redis.out"
