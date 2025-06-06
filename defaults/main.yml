@@ -43,10 +43,10 @@ misp_testing_user_home: ''
 userkey: ''
 
 ## value for kitchen forwarding
-misp_base_ip: 127.0.0.1
-misp_base_port: 8888
-misp_base_url: http://127.0.0.1:8888
-misp_servername: misp.local
+misp_base_ip: "{{ ansible_host }}"
+misp_base_port: 8889
+misp_base_url: "http://{{ inventory_hostname }}"
+misp_servername: "{{ inventory_hostname }}"
 misp_email: root@localhost
 misp_gpg_email: "{{ misp_email }}"
 misp_gpg_homedir: "{{ misp_rootdir }}/.gnupg"
@@ -66,7 +66,7 @@ misp_proxy_pass: ''
 misp_db_user: misp
 misp_db_pass: mispdb_pass_to_change_fast
 misp_web_user: admin@admin.test
-misp_web_pass: admin_pass_to_change_fast
+misp_web_pass: admin_pass_to_change_fast3333
 misp_supervisorhttp_user: supervisorhttp
 misp_supervisorhttp_pass: PWD_CHANGE_ME
 ## extra users, the password is only valid once. user will be asked to update
@@ -113,7 +113,6 @@ misp_php_snuffleupagus_enable: false
 
 # if adding ::1, ensure IPv6 is functional. https://github.com/antirez/redis/issues/3241
 misp_redis_bind: '127.0.0.1'
-misp_redis_password: redis_password_to_change
 misp_redis_securecommands:
   - { re: '^rename-command FLUSHDB .*', l: 'rename-command FLUSHDB ""' }
   - { re: '^rename-command FLUSHALL .*', l: 'rename-command FLUSHALL ""' }
@@ -129,3 +128,18 @@ misp_run_updates_lock: "{{ misp_rootdir }}/.run_updates_lock"
 misp_cgroups_restriction_enable: true
 
 is_container: false
+
+
+##not explicit default vars
+
+misp_redis_host: 'ssot-valkey'
+misp_redis_port: '6379'
+misp_redis_password: "{{ valkey_password }}"
+
+
+
+misp_mariadb_host: 'ssot-db'
+misp_mariadb_port: '6379'
+misp_mariadb_user: 'misp'
+misp_mariadb_password: "{{ db_password }}"
+misp_mariadb_database: 'misp'

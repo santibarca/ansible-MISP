@@ -124,8 +124,8 @@
         creates: /tmp/mysqld_safe.out
         chdir: /var/lib/mysql
 
-- name: Import redis-secure
-  ansible.builtin.import_tasks: redis-secure.yml
+# - name: Import redis-secure
+#   ansible.builtin.import_tasks: redis-secure.yml
 
 - name: Ensure archives folder exists
   ansible.builtin.file:
@@ -381,8 +381,8 @@
     state: touch
   when: not debuglog.stat.exists
 
-- name: Import mysql-configure
-  ansible.builtin.import_tasks: mysql-configure.yml
+# - name: Import mysql-configure
+#   ansible.builtin.import_tasks: mysql-configure.yml
 
 - name: Extra php settings
   ansible.builtin.template:
