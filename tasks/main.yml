@@ -458,16 +458,16 @@
     - core
     # - config
 
-- name: Update database settings
-  ansible.builtin.replace:
-    dest: "{{ misp_rootdir }}/app/Config/database.php"
-    regexp: "{{ item.regexp }}"
-    replace: "{{ item.replace }}"
-    mode: '0640'
-  with_items:
-    - { regexp: 'db login', replace: "{{ misp_db_user }}" }
-    - { regexp: 'db password', replace: "{{ misp_db_pass }}" }
-  no_log: "{{ misp_no_log }}"
+# - name: Update database settings
+#   ansible.builtin.replace:
+#     dest: "{{ misp_rootdir }}/app/Config/database.php"
+#     regexp: "{{ item.regexp }}"
+#     replace: "{{ item.replace }}"
+#     mode: '0640'
+#   with_items:
+#     - { regexp: 'db login', replace: "{{ misp_db_user }}" }
+#     - { regexp: 'db password', replace: "{{ misp_db_pass }}" }
+#   no_log: "{{ misp_no_log }}"
 - name: Set CakeResque bootstrap to true
   ansible.builtin.lineinfile:
     dest: "{{ misp_rootdir }}/app/Config/bootstrap.php"

@@ -88,7 +88,6 @@ redis_svc: redis
 redis_conf: /etc/redis/redis.conf
 misp_services:
  - "{{ apache_svc }}"
- - "{{ mysql_svc }}"
  - "{{ rng_svc }}"
 
 misp_services_nginx:

@@ -1,6 +1,6 @@
 - name: Updating MISP SQL config with remote SQL
   ansible.builtin.template:
-    src: ../template/templates/database.php.j2
+    src: ../templates/database.php.j2
     dest: "{{ misp_rootdir }}/app/Config/database.php"
     mode: '0600'
     backup: yes
