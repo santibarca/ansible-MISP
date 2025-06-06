@@ -2,7 +2,7 @@
 
 misp_pkg_list:
  - openssh-server
- - mysql-server
+#  - mysql-server
  # MISP only supports PHP 7 on oct 2022
  - php8.3
  - php8.3-cli
@@ -27,7 +27,7 @@ misp_pkg_list:
  - gcc
  - zip
  - git
- - redis-server
+#  - redis-server
  - make
  - python3-dev
  - python3-pip
@@ -92,8 +92,8 @@ misp_services:
  - "{{ rng_svc }}"
 
 misp_services_nginx:
- - "{{ apache_svc }}"
- - "{{ mysql_svc }}"
+#  - "{{ apache_svc }}"
+#  - "{{ mysql_svc }}"
  - "{{ rng_svc }}"
  - php8.3-fpm
 
